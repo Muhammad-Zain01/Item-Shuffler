@@ -1,8 +1,8 @@
-import { EditOutlined, PlusOutlined, SaveOutlined } from "@ant-design/icons";
+import React, { ChangeEvent } from "react"
+import { CodeSandboxCircleFilled, ConsoleSqlOutlined, EditOutlined, PlusOutlined, SaveOutlined } from "@ant-design/icons";
 import { Card, Checkbox, List, Button, Input } from "antd"
-import React from "react"
 
-type Item = {
+export type Item = {
     item: string;
     checked: boolean;
 }
@@ -11,17 +11,32 @@ type ComponentProps = {
     title: string;
     onClick: (checked: boolean, idx: number) => void;
     addItem: (e: string) => void;
+    updateItem : (value: string, idx: number) => void
 }
 
+type InputChange = {
+    [key : number] : string
+}
 
-const CardItem: React.FC<ComponentProps> = ({ items, title, onClick, addItem }): JSX.Element => {
+const CardItem: React.FC<ComponentProps> = ({ items, title, onClick, addItem, updateItem }): JSX.Element => {
     const [showInputBox, setShowInput] = React.useState([])
+    const [inputChanges, setInputChanges] = React.useState<InputChange>({})
     const Title = (
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             {title}
             <Button icon={<PlusOutlined />} onClick={() => {addItem('Item')}}></Button>
         </div>
     )
+    const handleSave = (idx: number) => {
+        setShowInput(showInputBox.filter((i) => i != idx))
+        if(inputChanges[idx]){
+            updateItem(inputChanges[idx], idx)
+            setInputChanges(Object.keys(inputChanges).filter((index) => Number(index) != idx ?? {[index] : inputChanges[Number(index)]} ))        
+        }
+    }
+    const handleChange = (value: string, idx: number) => {
+        setInputChanges({...inputChanges, [idx]: value})
+    }
     return (
         <Card title={Title} hoverable style={{ width: '40%' }}>
             <List
@@ -32,8 +47,8 @@ const CardItem: React.FC<ComponentProps> = ({ items, title, onClick, addItem }):
                             showInputBox.includes(idx) ?
                                 (
                                     <>
-                                        <Input defaultValue={item.item} />
-                                        <Button style={{ marginLeft: 10 }} icon={<SaveOutlined />} onClick={() => setShowInput(showInputBox.filter((i) => i != idx))}></Button>
+                                        <Input defaultValue={item.item} onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(e.currentTarget.value, idx)} />
+                                        <Button style={{ marginLeft: 10 }} icon={<SaveOutlined />} onClick={() => handleSave(idx)}></Button>
                                     </>
                                 ) : (
                                     <>
