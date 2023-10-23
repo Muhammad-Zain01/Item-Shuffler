@@ -10,6 +10,12 @@ export default function Home() {
   const handleLeftCheckbox = (checked: boolean, idx: number) => {
     setLeftItems(leftItems.map((item, index) => index == idx ? { ...item, checked } : item))
   }
+  const addLeftCheckbox = (item) => {
+    setLeftItems([...leftItems, {item, checked:false}])
+  }
+  const addRightCheckbox = (item) => {
+    setRightItems([...rightItems, {item, checked:false}])
+  }
   const handleRightCheckbox = (checked: boolean, idx: number) => {
     setRightItems(rightItems.map((item, index) => index == idx ? { ...item, checked } : item))
   }
@@ -27,11 +33,11 @@ export default function Home() {
   return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80vh' }}>
       <div style={{ display: 'flex', width: '50%', justifyContent: 'space-between' }}>
-        <CardItem items={leftItems} onClick={handleLeftCheckbox} title="Left Side" />
+        <CardItem items={leftItems} onClick={handleLeftCheckbox} addItem={addLeftCheckbox} title="Left Side" />
         <div>
           <ButtonItem handleRightClick={handleLeftClick} handleLeftClick={handleRightClick} />
         </div>
-        <CardItem items={rightItems} onClick={handleRightCheckbox} title="Right Side" />
+        <CardItem items={rightItems} onClick={handleRightCheckbox} addItem={addRightCheckbox} title="Right Side" />
       </div>
     </div>
   )
