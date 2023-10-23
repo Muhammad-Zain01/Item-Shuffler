@@ -10,15 +10,16 @@ type ComponentProps = {
     items: Item[];
     title: string;
     onClick: (checked: boolean, idx: number) => void;
+    addItem: (e: string) => void;
 }
 
 
-const CardItem: React.FC<ComponentProps> = ({ items, title, onClick }): JSX.Element => {
+const CardItem: React.FC<ComponentProps> = ({ items, title, onClick, addItem }): JSX.Element => {
     const [showInputBox, setShowInput] = React.useState([])
     const Title = (
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             {title}
-            <Button icon={<PlusOutlined />}></Button>
+            <Button icon={<PlusOutlined />} onClick={() => {addItem('Item')}}></Button>
         </div>
     )
     return (
