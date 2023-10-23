@@ -1,5 +1,5 @@
-import { PlusOutlined } from "@ant-design/icons";
-import { Card, Checkbox, List, Button } from "antd"
+import { EditOutlined, PlusOutlined, SaveOutlined } from "@ant-design/icons";
+import { Card, Checkbox, List, Button, Input } from "antd"
 import React from "react"
 
 type Item = {
@@ -14,8 +14,9 @@ type ComponentProps = {
 
 
 const CardItem: React.FC<ComponentProps> = ({ items, title, onClick }): JSX.Element => {
+    const [showInputBox, setShowInput] = React.useState([])
     const Title = (
-        <div style={{display:'flex', justifyContent:'space-between', alignItems:'center'}}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             {title}
             <Button icon={<PlusOutlined />}></Button>
         </div>
@@ -26,7 +27,20 @@ const CardItem: React.FC<ComponentProps> = ({ items, title, onClick }): JSX.Elem
                 dataSource={items}
                 renderItem={(item: Item, idx: number) => (
                     <List.Item>
-                        <Checkbox checked={item.checked} onClick={(e: React.MouseEvent<HTMLInputElement>) => onClick(e.currentTarget.checked, idx)}>{item.item}</Checkbox>
+                        {
+                            showInputBox.includes(idx) ?
+                                (
+                                    <>
+                                        <Input defaultValue={item.item} />
+                                        <Button style={{ marginLeft: 10 }} icon={<SaveOutlined />} onClick={() => setShowInput(showInputBox.filter((i) => i != idx))}></Button>
+                                    </>
+                                ) : (
+                                    <>
+                                        <Checkbox checked={item.checked} onClick={(e: React.MouseEvent<HTMLInputElement>) => onClick(e.currentTarget.checked, idx)}>{item.item}</Checkbox>
+                                        <Button style={{ marginLeft: 10 }} icon={<EditOutlined />} onClick={() => setShowInput([...showInputBox, idx])}></Button>
+                                    </>
+                                )
+                        }
                     </List.Item>
                 )}
             />
