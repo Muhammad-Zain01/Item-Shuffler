@@ -24,6 +24,16 @@ export default function Home() {
     setRightItems(data)
     localStorage.setItem('right', JSON.stringify(data))
   }
+  const deleteLeftItem = (idx: number) => {
+    const data = leftItems.filter((item, index) => index != idx)
+    setLeftItems(data)
+    localStorage.setItem('left', JSON.stringify(data))
+  }
+  const deleteRightItem = (idx: number) => {
+    const data = rightItems.filter((item, index) => index != idx)
+    setRightItems(data)
+    localStorage.setItem('right', JSON.stringify(data))
+  }
   const updateRight = (value: string, idx: number) => {
     const data = rightItems.map((item, index) => index == idx ? { ...item, item: value } : item)
     setRightItems(data)
@@ -61,11 +71,11 @@ export default function Home() {
   return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80vh' }}>
       <div style={{ display: 'flex', width: '50%', justifyContent: 'space-between' }}>
-        <CardItem items={leftItems} onClick={handleLeftCheckbox} addItem={addLeftCheckbox} updateItem={updateLeft} title="Left Side" />
+        <CardItem items={leftItems} onClick={handleLeftCheckbox} addItem={addLeftCheckbox} updateItem={updateLeft} deleteItem={deleteLeftItem} title="Left Side" />
         <div>
           <ButtonItem handleRightClick={handleLeftClick} handleLeftClick={handleRightClick} />
         </div>
-        <CardItem items={rightItems} onClick={handleRightCheckbox} addItem={addRightCheckbox} updateItem={updateRight} title="Right Side" />
+        <CardItem items={rightItems} onClick={handleRightCheckbox} addItem={addRightCheckbox} updateItem={updateRight} deleteItem={deleteRightItem} title="Right Side" />
       </div>
     </div>
   )
