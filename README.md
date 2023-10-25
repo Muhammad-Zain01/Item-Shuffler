@@ -1,6 +1,6 @@
 # Item Shuffler
 
-[](https://raw.githubusercontent.com/Muhammad-Zain01/Item-Shuffler/main/preview.png)
+[Image](https://raw.githubusercontent.com/Muhammad-Zain01/Item-Shuffler/main/preview.png)
 
 [click here](https://muhammad-zain01.github.io/Item-Shuffler/) to see this project
 
