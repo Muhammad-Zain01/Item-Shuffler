@@ -1,5 +1,5 @@
 const useStorage = () => {
-    const setItem = (key: string, value: string){
+    const setItem = (key: string, value: string)=>{
         if(typeof window !== 'undefined'){
             localStorage.setItem(key, value);
         }
@@ -8,7 +8,7 @@ const useStorage = () => {
         if(typeof window !== 'undefined'){
             return localStorage.getItem(key);
         }
-        return []
+        return null
     }
 
     return {getItem, setItem}
