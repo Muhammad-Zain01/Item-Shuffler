@@ -1,9 +1,11 @@
 # Item Shuffler
 
+[](https://raw.githubusercontent.com/Muhammad-Zain01/Item-Shuffler/main/preview.png)
+
 [click here](https://muhammad-zain01.github.io/Item-Shuffler/) to see this project
 
+
 #### If you want to run this project on your local server
-First, run the development server:
 
 ```bash
 npm run dev
