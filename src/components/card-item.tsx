@@ -20,7 +20,7 @@ type InputChange = {
 }
 
 const CardItem: React.FC<ComponentProps> = ({ items, title, onClick, addItem, updateItem, deleteItem }): JSX.Element => {
-    const [showInputBox, setShowInput] = React.useState([])
+    const [showInputBox, setShowInput] = React.useState<number[]>([])
     const [inputChanges, setInputChanges] = React.useState<InputChange>({})
     const Title = (
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
