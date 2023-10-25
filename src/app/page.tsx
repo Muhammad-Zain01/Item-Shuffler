@@ -4,10 +4,13 @@ import CardItem from "@/components/card-item"
 import ButtonItem from "@/components/button-item"
 import React, { useState, useRef } from "react"
 import { Item } from "@/components/card-item"
+import useStorage from "@/hooks/useStorage"
 export default function Home() {
-
-  const left: Item[] | null = localStorage.getItem('left') == null ? [] : JSON.parse(localStorage.getItem('left'))
-  const right: Item[] | null = localStorage.getItem('right') == null ? [] : JSON.parse(localStorage.getItem('right'))
+  const { setItem, getItem } = useStorage();
+  const l = getItem('left');
+  const r = getItem('right');
+  const left: Item[] | [] = l == null ? [] : JSON.parse(l)
+  const right: Item[] | [] = r == null ? [] : JSON.parse(r)
   const [leftItems, setLeftItems] = useState<Item[] | []>(left)
   const [rightItems, setRightItems] = useState<Item[] | []>(right)
 
@@ -17,37 +20,37 @@ export default function Home() {
   const addLeftCheckbox = (item: string) => {
     const data = [...leftItems, { item, checked: false }]
     setLeftItems(data)
-    localStorage.setItem('left', JSON.stringify(data))
+    setItem('left', JSON.stringify(data))
   }
   const addRightCheckbox = (item: string) => {
     const data = [...rightItems, { item, checked: false }]
     setRightItems(data)
-    localStorage.setItem('right', JSON.stringify(data))
+    setItem('right', JSON.stringify(data))
   }
   const deleteLeftItem = (idx: number) => {
     const data = leftItems.filter((item, index) => index != idx)
     setLeftItems(data)
-    localStorage.setItem('left', JSON.stringify(data))
+    setItem('left', JSON.stringify(data))
   }
   const deleteRightItem = (idx: number) => {
     const data = rightItems.filter((item, index) => index != idx)
     setRightItems(data)
-    localStorage.setItem('right', JSON.stringify(data))
+    setItem('right', JSON.stringify(data))
   }
   const updateRight = (value: string, idx: number) => {
     const data = rightItems.map((item, index) => index == idx ? { ...item, item: value } : item)
     setRightItems(data)
-    localStorage.setItem('right', JSON.stringify(data))
+    setItem('right', JSON.stringify(data))
   }
   const updateLeft = (value: string, idx: number) => {
     const data = leftItems.map((item, index) => index == idx ? { ...item, item: value } : item);
     setLeftItems(data)
-    localStorage.setItem('left', JSON.stringify(data));
+    setItem('left', JSON.stringify(data));
   }
   const handleRightCheckbox = (checked: boolean, idx: number) => {
     const data = rightItems.map((item, index) => index == idx ? { ...item, checked } : item)
     setRightItems(data)
-    localStorage.setItem('right', JSON.stringify(data));
+    setItem('right', JSON.stringify(data));
   }
 
   const handleRightClick = () => {
@@ -55,8 +58,8 @@ export default function Home() {
     const right = [...rightItems, ...leftItems.filter((item) => item.checked)]
     setLeftItems(left)
     setRightItems(right)
-    localStorage.setItem('left', JSON.stringify(left));
-    localStorage.setItem('right', JSON.stringify(right));
+    setItem('left', JSON.stringify(left));
+    setItem('right', JSON.stringify(right));
   }
 
   const handleLeftClick = () => {
@@ -64,8 +67,8 @@ export default function Home() {
     const right = rightItems.filter((item) => !item.checked)
     setRightItems(right)
     setLeftItems(left)
-    localStorage.setItem('left', JSON.stringify(left));
-    localStorage.setItem('right', JSON.stringify(right));
+    setItem('left', JSON.stringify(left));
+    setItem('right', JSON.stringify(right));
   }
 
   return (
