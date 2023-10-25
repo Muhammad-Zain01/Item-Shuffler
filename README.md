@@ -1,7 +1,7 @@
 # Item Shuffler
 
 
-![preview]([http://url/to/img.png](https://raw.githubusercontent.com/Muhammad-Zain01/Item-Shuffler/main/preview.png))
+![preview](https://raw.githubusercontent.com/Muhammad-Zain01/Item-Shuffler/main/preview.png)
 
 [click here](https://muhammad-zain01.github.io/Item-Shuffler/) to see this project
 
