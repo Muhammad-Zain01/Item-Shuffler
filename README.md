@@ -1,6 +1,6 @@
 # Item Shuffler
 
-(click here)[https://muhammad-zain01.github.io/Item-Shuffler/] to see this project
+[click here](https://muhammad-zain01.github.io/Item-Shuffler/) to see this project
 
 ### If you want to run this project on your local server
 First, run the development server:
