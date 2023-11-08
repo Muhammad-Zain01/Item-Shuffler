@@ -32,8 +32,8 @@ This intuitive interface ensures a user-friendly experience while providing a cl
 
 ### Built With
 
-<!-- * [![Next][Next.js]][Next-url] -->
-* [![React][React.js]][React-url]
+* [![Next][Next.js]][Next-url]
+<!-- * [![React][React.js]][React-url] -->
 <!-- * [![Vue][Vue.js]][Vue-url] -->
 <!-- * [![Angular][Angular.io]][Angular-url] -->
 <!-- * [![Svelte][Svelte.dev]][Svelte-url] -->
@@ -56,23 +56,28 @@ This is an example of how to list things you need to use the software and how to
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
    git clone https://github.com/muhammad-zain01/Item-Shuffler.git
    ```
-3. Install NPM packages
+2. Install NPM packages
    ```sh
    npm install
    ```
-<!-- 4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ``` -->
+3. If you want to run this project on your local server
+    ```bash
+    npm run dev
+    # or
+    yarn dev
+    # or
+    pnpm dev
+    # or
+    bun dev
+    ```
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+
 See the [open issues](https://github.com/muhammad-zain01/Item-Shuffler/issues) for a full list of proposed features (and known issues).
-
-
-
 
 <!-- CONTRIBUTING -->
 ## Contributing
@@ -89,20 +94,10 @@ Don't forget to give the project a star! Thanks again!
 5. Open a Pull Request
 
 
-
-
-<!-- LICENSE -->
-## License
-
-Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-
-
-
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
+Your Name - zainmemon010@gmail.com
 
 Project Link: [https://github.com/muhammad-zain01/Item-Shuffler](https://github.com/muhammad-zain01/Item-Shuffler)
 
@@ -139,29 +134,3 @@ Project Link: [https://github.com/muhammad-zain01/Item-Shuffler](https://github.
 
 
 
-# Item Shuffler
-
-
-![preview](https://raw.githubusercontent.com/Muhammad-Zain01/Item-Shuffler/main/preview.png)
-
-[click here](https://muhammad-zain01.github.io/Item-Shuffler/) to see this project
-
-## Description
-
-The Bi-directional Item Exchanger is a robust React component designed to manage and facilitate the seamless transfer of items between two distinct lists. Users interact with the component by selecting items from one list, then clicking a button to transfer the selected items to the opposite list, and vice versa.
-
-This intuitive interface ensures a user-friendly experience while providing a clear visual representation of item organization and transfer. The Exchanger's responsive design ensures functionality across a wide range of devices, making it a versatile choice for numerous application scenarios. Whether managing user permissions, organizing categories, or any other use case requiring item transfer between lists, the Bi-directional Item Exchanger in React is a reliable and efficient solution.
-
-#### If you want to run this project on your local server
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
